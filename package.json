@@ -4,9 +4,10 @@
   "main": "dist/infrastructure/server.js",
   "scripts": {
     "start:dev": "nodemon --exec ts-node src/infrastructure/server.ts",
-    "build": "tsc",
-    "start": "node dist/infrastructure/server.js"
+    "start": "node dist/infrastructure/server.js",
+    "build": "node --max-old-space-size=4096 ./node_modules/typescript/bin/tsc"
   },
+  
   "dependencies": {
     "aws-sdk": "^2.1648.0",
     "dotenv": "^16.4.5",
