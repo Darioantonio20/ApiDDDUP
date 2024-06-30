@@ -1,4 +1,4 @@
-export default class Business {
+export default class Maestros {
     id: string | null;
     name: string;
     description: string;

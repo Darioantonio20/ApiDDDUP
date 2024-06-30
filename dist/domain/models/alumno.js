@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-// src/domain/models/Alumno.ts
 class Alumno {
     constructor(id, name, email, password) {
         this.id = id;

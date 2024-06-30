@@ -1,5 +1,4 @@
 "use strict";
-// src/adapters/repositories/mongoBusinessRepository.ts
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -13,42 +12,42 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const bussines_1 = __importDefault(require("../../domain/models/bussines"));
-const businessSchema_1 = require("./schemas/businessSchema");
-class MongoBusinessRepository {
-    save(business) {
+const maestros_1 = __importDefault(require("../../domain/models/maestros"));
+const maestrosSchema_1 = require("./schemas/maestrosSchema");
+class MongoMaestrosRepository {
+    save(maestros) {
         return __awaiter(this, void 0, void 0, function* () {
-            const businessModel = new businessSchema_1.BusinessModel(business);
-            const savedBusiness = yield businessModel.save();
-            return new bussines_1.default(savedBusiness.id, savedBusiness.name, savedBusiness.description);
+            const maestrosModel = new maestrosSchema_1.MaestrosModel(maestros);
+            const savedMaestros = yield maestrosModel.save();
+            return new maestros_1.default(savedMaestros.id, savedMaestros.name, savedMaestros.description);
         });
     }
     findById(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const business = yield businessSchema_1.BusinessModel.findById(id);
-            if (!business)
+            const maestros = yield maestrosSchema_1.MaestrosModel.findById(id);
+            if (!maestros)
                 return null;
-            return new bussines_1.default(business.id, business.name, business.description);
+            return new maestros_1.default(maestros.id, maestros.name, maestros.description);
         });
     }
     findAll() {
         return __awaiter(this, void 0, void 0, function* () {
-            const businesses = yield businessSchema_1.BusinessModel.find();
-            return businesses.map(business => new bussines_1.default(business.id, business.name, business.description));
+            const maestroses = yield maestrosSchema_1.MaestrosModel.find();
+            return maestroses.map(maestros => new maestros_1.default(maestros.id, maestros.name, maestros.description));
         });
     }
-    update(business) {
+    update(maestros) {
         return __awaiter(this, void 0, void 0, function* () {
-            const updatedBusiness = yield businessSchema_1.BusinessModel.findByIdAndUpdate(business.id, business, { new: true });
-            if (!updatedBusiness)
-                throw new Error('Business not found');
-            return new bussines_1.default(updatedBusiness.id, updatedBusiness.name, updatedBusiness.description);
+            const updatedMaestros = yield maestrosSchema_1.MaestrosModel.findByIdAndUpdate(maestros.id, maestros, { new: true });
+            if (!updatedMaestros)
+                throw new Error('Maestros not found');
+            return new maestros_1.default(updatedMaestros.id, updatedMaestros.name, updatedMaestros.description);
         });
     }
     deleteById(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield businessSchema_1.BusinessModel.findByIdAndDelete(id);
+            yield maestrosSchema_1.MaestrosModel.findByIdAndDelete(id);
         });
     }
 }
-exports.default = MongoBusinessRepository;
+exports.default = MongoMaestrosRepository;

@@ -7,25 +7,25 @@ import connectMySQL from './database/mysqlConnection';
 import { S3StorageRepository } from '../adapters/repositories/s3StorageRepository';
 import { LocalStorageRepository } from '../adapters/repositories/localStorageRepository';
 import { IStorageRepository } from '../domain/repositories/IStorageRepository';
-import { IBusinessRepository } from '../domain/repositories/IBusinessRepository';
-import MongoBusinessRepository from '../adapters/repositories/mongoBusinessRepository';
-import MySQLBusinessRepository from '../adapters/repositories/mysqlBusinessRepository';
-import { BusinessService } from '../application/services/businessService';
+import { IMaestrosRepository } from '../domain/repositories/IMaestrosRepository';
+import MongoMaestrosRepository from '../adapters/repositories/mongoMaestrosRepository';
+import MySQLMaestrosRepository from '../adapters/repositories/mysqlMaestrosRepository';
+import { MaestrosService } from '../application/services/maestrosService';
 
 const useMongoDB: boolean = process.env.USE_MONGODB === 'true';
 const useS3: boolean = process.env.USE_S3 === 'true';
 
 let alumnoRepository: IAlumnoRepository;
-let businessRepository: IBusinessRepository;
+let maestrosRepository: IMaestrosRepository;
 
 if (useMongoDB) {
     connectMongoDB();
     alumnoRepository = new MongoAlumnoRepository();
-    businessRepository = new MongoBusinessRepository();
+    maestrosRepository = new MongoMaestrosRepository();
 } else {
     connectMySQL();
     alumnoRepository = new MySQLAlumnoRepository();
-    businessRepository = new MySQLBusinessRepository();
+    maestrosRepository = new MySQLMaestrosRepository();
 }
 
 let storageRepository: IStorageRepository;
@@ -37,6 +37,6 @@ if (useS3) {
 }
 
 const alumnoService = new AlumnoService(alumnoRepository);
-const businessService = new BusinessService(businessRepository);
+const maestrosService = new MaestrosService(maestrosRepository);
 
-export { alumnoService, businessService, storageRepository };
+export { alumnoService, maestrosService, storageRepository };

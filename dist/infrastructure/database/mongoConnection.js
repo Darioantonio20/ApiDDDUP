@@ -16,9 +16,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 const connectMongoDB = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        yield mongoose_1.default.connect(process.env.MONGO_URI, {
-        // useNewUrlParser y useUnifiedTopology ya no son necesarios
-        });
+        yield mongoose_1.default.connect(process.env.MONGO_URI, {});
         console.log("Connected to MongoDB database");
     }
     catch (error) {

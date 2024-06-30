@@ -1,5 +1,4 @@
 "use strict";
-// src/adapters/repositories/schemas/businessSchema.ts
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -24,11 +23,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BusinessModel = void 0;
+exports.MaestrosModel = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
-const businessSchema = new mongoose_1.Schema({
+const maestrosSchema = new mongoose_1.Schema({
     name: { type: String, required: true },
     description: { type: String, required: true },
     // Define más campos aquí si es necesario
 });
-exports.BusinessModel = mongoose_1.default.model('Business', businessSchema);
+exports.MaestrosModel = mongoose_1.default.model('Maestros', maestrosSchema);

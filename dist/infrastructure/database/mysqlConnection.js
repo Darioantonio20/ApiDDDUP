@@ -32,13 +32,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// src/infrastructure/database/mysqlConnection.ts
 const mysql = __importStar(require("mysql2/promise"));
 const connectMySQL = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const connection = yield mysql.createConnection({
             host: process.env.DB_HOST,
-            alumno: process.env.DB_Alumno,
+            user: process.env.DB_Alumno,
             password: process.env.DB_PASSWORD,
             database: process.env.DB_NAME
         });

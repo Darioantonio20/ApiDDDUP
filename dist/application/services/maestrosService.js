@@ -1,5 +1,4 @@
 "use strict";
-// src/application/services/businessService.ts
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -13,38 +12,38 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BusinessService = void 0;
-const bussines_1 = __importDefault(require("../../domain/models/bussines"));
-class BusinessService {
-    constructor(businessRepository) {
-        BusinessService.businessRepository = businessRepository;
+exports.MaestrosService = void 0;
+const maestros_1 = __importDefault(require("../../domain/models/maestros"));
+class MaestrosService {
+    constructor(maestrosRepository) {
+        MaestrosService.maestrosRepository = maestrosRepository;
     }
-    static createBusiness(name, description) {
+    static createMaestros(name, description) {
         return __awaiter(this, void 0, void 0, function* () {
-            const business = new bussines_1.default(null, name, description);
-            return yield BusinessService.businessRepository.save(business);
+            const maestros = new maestros_1.default(null, name, description);
+            return yield MaestrosService.maestrosRepository.save(maestros);
         });
     }
-    static getBusinessById(id) {
+    static getMaestrosById(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield BusinessService.businessRepository.findById(id);
+            return yield MaestrosService.maestrosRepository.findById(id);
         });
     }
-    static getAllBusinesses() {
+    static getAllMaestroses() {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield BusinessService.businessRepository.findAll();
+            return yield MaestrosService.maestrosRepository.findAll();
         });
     }
-    static updateBusiness(id, name, description) {
+    static updateMaestros(id, name, description) {
         return __awaiter(this, void 0, void 0, function* () {
-            const business = new bussines_1.default(id, name, description);
-            return yield BusinessService.businessRepository.update(business);
+            const maestros = new maestros_1.default(id, name, description);
+            return yield MaestrosService.maestrosRepository.update(maestros);
         });
     }
-    static deleteBusinessById(id) {
+    static deleteMaestrosById(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield BusinessService.businessRepository.deleteById(id);
+            yield MaestrosService.maestrosRepository.deleteById(id);
         });
     }
 }
-exports.BusinessService = BusinessService;
+exports.MaestrosService = MaestrosService;

@@ -19,7 +19,7 @@ class MySQLAlumnoRepository {
         return __awaiter(this, void 0, void 0, function* () {
             const connection = yield (0, mysqlConnection_1.default)();
             const [result] = yield connection.execute('INSERT INTO alumnos (name, email, password) VALUES (?, ?, ?)', [alumno.name, alumno.email, alumno.password]);
-            alumno.id = result.insertId.toString(); // Assuming `id` is a string in Alumno model.
+            alumno.id = result.insertId.toString();
             return alumno;
         });
     }
